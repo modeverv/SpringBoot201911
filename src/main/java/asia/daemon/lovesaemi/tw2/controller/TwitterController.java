@@ -21,12 +21,14 @@ public class TwitterController {
 		return "ok";
 	}
 	
+	// @CrossOrigin
 	@GetMapping("/favos")
 	public List<Favo> getFavo(@RequestParam(name = "offset",required = false) Long offset, @RequestParam(name = "tag", required = false) String tag) {
 		List<Favo> result = favoService.getFavos(offset, tag);
 		return result;
 	}
 
+	// @CrossOrigin
 	@GetMapping("tags")
 	public List<String> getTags(){
 		return favoService.getTags();
