@@ -3,6 +3,7 @@ package asia.daemon.lovesaemi.tw2.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,15 +21,15 @@ public class TwitterController {
 	public String getHello() {
 		return "ok";
 	}
-	
-	// @CrossOrigin
+
+	@CrossOrigin
 	@GetMapping("/favos")
 	public List<Favo> getFavo(@RequestParam(name = "offset",required = false) Long offset, @RequestParam(name = "tag", required = false) String tag) {
 		List<Favo> result = favoService.getFavos(offset, tag);
 		return result;
 	}
 
-	// @CrossOrigin
+	@CrossOrigin
 	@GetMapping("tags")
 	public List<String> getTags(){
 		return favoService.getTags();
