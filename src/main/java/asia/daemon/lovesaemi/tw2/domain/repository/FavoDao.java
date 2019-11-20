@@ -26,17 +26,17 @@ public class FavoDao {
 		String sql = " SELECT * FROM twitter ";
 		if(null != tag) {
 			if("::::NULL::::".equals(tag)) {
-				sql = sql + " WHERE tag IS NULL";				
+				sql = sql + " WHERE tag IS NULL";
 			} else {
-				sql = sql + " WHERE tag = :tag ";				
-				params.put("tag", tag);		
+				sql = sql + " WHERE tag = :tag ";
+				params.put("tag", tag);
 			}
 		}
 		sql = sql + " ORDER by created_at desc ";
 		if(null != offset) {
-			sql = sql + " limit 10 offset " + String.valueOf(offset);
+			sql = sql + " limit 50 offset " + String.valueOf(offset);
 		} else {
-			sql = sql + " limit 10 ";
+			sql = sql + " limit 50 ";
 		}
 		return  npJdbc.query(sql, params, new BeanPropertyRowMapper<Favo>(Favo.class));
 	}
